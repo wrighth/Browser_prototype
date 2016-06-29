@@ -13,8 +13,8 @@ class BROWSER_PROTOTYPE_API UScaleVectors : public UBlueprintFunctionLibrary
 {
 	GENERATED_BODY()
 public:
-	UFunction(BlueprintCallable, Category = "ScaleVectors")
-		static TArray <float> scaleSmallest(TArray <int> inputArray);
+	UFUNCTION(BlueprintCallable, Category = "ScaleVectors")
+		static TArray<float> scaleSmallest(TArray<float> inputArray);
 	
 	
 };

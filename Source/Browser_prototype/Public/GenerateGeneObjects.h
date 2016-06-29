@@ -14,8 +14,15 @@ class BROWSER_PROTOTYPE_API UGenerateGeneObjects : public UBlueprintFunctionLibr
 	GENERATED_BODY()
 public:
 		UFUNCTION(BlueprintCallable, Category = "GenerateGeneObjects")
-		static TArray <FVector> generateObjectPosition(FString toParse);
-	
-	
+			static TArray <FVector> generateObjectPosition(FString toParse);
+
+		UFUNCTION(BlueprintCallable, Category = "GenerateGeneObjects")
+			static float generateOffset(float boxExtent, float scale0, float scale1, float scale2);
+
+		UFUNCTION(BlueprintCallable, Category = "GenerateGeneObjects")
+			static TArray <float> generateSegmentVector(FString toParse);
+
+		UFUNCTION(BlueprintCallable, Category = "GenerateGeneObjects")
+			static TArray<FString> generateInfo(FString toParse);
 	
 };
