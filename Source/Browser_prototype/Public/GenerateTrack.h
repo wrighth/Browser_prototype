@@ -4,7 +4,7 @@
 
 #include "GameFramework/Actor.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
-#include "ChipSeqTrack.generated.h"
+#include "GenerateTrack.generated.h"
 
 UCLASS()
 class BROWSER_PROTOTYPE_API AChipSeqTrack : public AActor
@@ -22,12 +22,12 @@ public:
 	// Called every frame
 	virtual void Tick( float DeltaSeconds ) override;
 
-	UFUNCTION(BlueprintCallable, Category = "ChipSeqTrack")
+	UFUNCTION(BlueprintCallable, Category = "GenerateTrack")
 		static float generateFeatureScaleLength(int32 geneStart, int32 geneEnd, int32 featureStart, int32 featureEnd);
 
-	UFUNCTION(BlueprintCallable, Category = "ChipSeqTrack")
+	UFUNCTION(BlueprintCallable, Category = "GenerateTrack")
 		static float generateXDisplacement(int32 geneStart, int32 geneEnd, float absGeneLength, int32 featureStart, int32 featureEnd);
 	
-	UFUNCTION(BlueprintCallable, Category = "ChipSeqTrack")
+	UFUNCTION(BlueprintCallable, Category = "GenerateTrack")
 		static bool isCorrectModel(int32 geneStart, int32 geneEnd, int32 featureStart, int32 featureEnd);
 };
