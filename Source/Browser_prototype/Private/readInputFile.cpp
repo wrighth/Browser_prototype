@@ -18,6 +18,36 @@ FString UreadInputFile::getFirstLine(TArray<FString> inArray)
 	return inArray[0];
 }
 
+bool UreadInputFile::isChipSeq(TArray<FString> inputArray)
+{
+	TArray<FString> secondLineArray;
+	inputArray[1].ParseIntoArrayWS(secondLineArray, NULL);
+
+	float tryToConvert = FCString::Atof(*secondLineArray[3]);
+	const float zero = 0.0;
+
+	if (tryToConvert == zero) {
+		return false;
+	}
+	else {
+		return true;
+	}
+	
+}
+
+bool UreadInputFile::isSNP(TArray<FString> inputArray)
+{
+	TArray<FString> secondLineArray;
+	inputArray[1].ParseIntoArrayWS(secondLineArray, NULL);
+	FString testChar = secondLineArray[3];
+
+	if (testChar == "A" || testChar == "C" || testChar == "G" || testChar == "T") {
+		return true;
+	} else {
+		return false;
+	}
+}
+
 FString UreadInputFile::getTargetName(FString toParse)
 {
 	TArray<FString> forsplit;

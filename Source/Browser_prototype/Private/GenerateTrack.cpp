@@ -59,3 +59,44 @@ bool AChipSeqTrack::isCorrectModel(int32 geneStart, int32 geneEnd, int32 feature
 		return false;
 	}
 }
+
+TArray<FString> AChipSeqTrack::generateChipSeqInfoArray(FString targetChr, FString featureStart, FString featureEnd, FString featureHeight, FString trackName) 
+{
+	TArray<FString> returnArray;
+
+	returnArray.Add(targetChr);
+	returnArray.Add("Feature Start: " + featureStart);
+	returnArray.Add("Feature End: " + featureEnd);
+	returnArray.Add("Feature Height: " + featureHeight);
+	returnArray.Add(trackName);
+
+	return returnArray;
+}
+
+TArray<FString> AChipSeqTrack::generateSNPInfoArray(FString targetChr, FString geneName, FString position, FString base, FString trackName)
+
+{
+	TArray<FString> returnArray;
+
+	returnArray.Add(targetChr);
+	returnArray.Add("On Gene: " + geneName);
+	returnArray.Add("At Position: " + position);
+	returnArray.Add("Base Pair: " + base);
+	returnArray.Add(trackName);
+
+	return returnArray;
+}
+
+TArray<FString> AChipSeqTrack::generateTranscriptionSiteInfoArray(FString targetChr, FString geneName, FString positionRange, FString name, FString trackName)
+
+{
+	TArray<FString> returnArray;
+
+	returnArray.Add(targetChr);
+	returnArray.Add("On Gene: " + geneName);
+	returnArray.Add("Site Position: " + positionRange);
+	returnArray.Add("Name: " + name);
+	returnArray.Add(trackName);
+
+	return returnArray;
+}

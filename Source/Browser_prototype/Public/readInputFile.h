@@ -21,6 +21,12 @@ public:
 			static FString getFirstLine(TArray <FString> inArray);
 
 		UFUNCTION(BlueprintCallable, Category = "readInputFile")
+			static bool isChipSeq(TArray<FString> inputArray);
+
+		UFUNCTION(BlueprintCallable, Category = "readInputFile")
+			static bool isSNP(TArray<FString> inputArray);
+
+		UFUNCTION(BlueprintCallable, Category = "readInputFile")
 			static FString getTargetName(FString toParse);
 
 		UFUNCTION(BlueprintCallable, Category = "readInputFile")

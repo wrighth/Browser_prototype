@@ -30,4 +30,13 @@ public:
 	
 	UFUNCTION(BlueprintCallable, Category = "GenerateTrack")
 		static bool isCorrectModel(int32 geneStart, int32 geneEnd, int32 featureStart, int32 featureEnd);
+
+	UFUNCTION(BlueprintCallable, Category = "GenerateTrack")
+		static TArray<FString> generateChipSeqInfoArray(FString targetChr, FString featureStart, FString featureEnd, FString featureHeight, FString trackName);
+
+	UFUNCTION(BlueprintCallable, Category = "GenerateTrack")
+		static TArray<FString> generateSNPInfoArray(FString targetChr, FString geneName, FString position, FString base, FString trackName);
+
+	UFUNCTION(BlueprintCallable, Category = "GenerateTrack")
+		static TArray<FString> generateTranscriptionSiteInfoArray(FString targetChr, FString geneName, FString positionRange, FString name, FString trackName);
 };
