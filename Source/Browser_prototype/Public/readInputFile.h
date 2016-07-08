@@ -37,5 +37,8 @@ public:
 
 		UFUNCTION(BlueprintCallable, Category = "readInputFile")
 			static float getFeatureHeight(FString toParse);
+
+		UFUNCTION(BlueprintCallable, Category = "readInputFile")
+			static FString getBase(FString toParse);
 	
 };

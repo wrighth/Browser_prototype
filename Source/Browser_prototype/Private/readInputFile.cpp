@@ -82,3 +82,12 @@ float UreadInputFile::getFeatureHeight(FString toParse)
 	float retFloat = FCString::Atof(*forsplit[3]);
 	return retFloat;
 }
+
+FString UreadInputFile::getBase(FString toParse)
+{
+	TArray<FString> forsplit;
+	toParse.ParseIntoArrayWS(forsplit, NULL);
+
+	FString retString = forsplit[3];
+	return retString;
+}
