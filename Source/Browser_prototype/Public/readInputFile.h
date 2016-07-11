@@ -41,4 +41,6 @@ public:
 		UFUNCTION(BlueprintCallable, Category = "readInputFile")
 			static FString getBase(FString toParse);
 	
+		UFUNCTION(BlueprintCallable, Category = "readInputFile")
+			static FString getSiteName(FString toParse);
 };

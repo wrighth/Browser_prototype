@@ -4,6 +4,9 @@
 #include "CoreMisc.h"	//header file for FFileHelper
 #include "CString.h"
 #include "../Public/readInputFile.h" //header file for class
+#include <string>
+
+using namespace std;
 
 TArray <FString> UreadInputFile::loadArrayFromFile(FString inFileName)
 {
@@ -22,17 +25,13 @@ bool UreadInputFile::isChipSeq(TArray<FString> inputArray)
 {
 	TArray<FString> secondLineArray;
 	inputArray[1].ParseIntoArrayWS(secondLineArray, NULL);
-
-	float tryToConvert = FCString::Atof(*secondLineArray[3]);
-	const float zero = 0.0;
-
-	if (tryToConvert == zero) {
+	
+	if (secondLineArray[3].Contains(TEXT("."))) {
+		return true;
+	} 
+	else {
 		return false;
 	}
-	else {
-		return true;
-	}
-	
 }
 
 bool UreadInputFile::isSNP(TArray<FString> inputArray)
@@ -84,6 +83,15 @@ float UreadInputFile::getFeatureHeight(FString toParse)
 }
 
 FString UreadInputFile::getBase(FString toParse)
+{
+	TArray<FString> forsplit;
+	toParse.ParseIntoArrayWS(forsplit, NULL);
+
+	FString retString = forsplit[3];
+	return retString;
+}
+
+FString UreadInputFile::getSiteName(FString toParse)
 {
 	TArray<FString> forsplit;
 	toParse.ParseIntoArrayWS(forsplit, NULL);
