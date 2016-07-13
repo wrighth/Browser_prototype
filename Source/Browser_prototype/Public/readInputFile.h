@@ -27,6 +27,9 @@ public:
 			static bool isSNP(TArray<FString> inputArray);
 
 		UFUNCTION(BlueprintCallable, Category = "readInputFile")
+			static bool isArcTrack(TArray<FString> inputArray);
+
+		UFUNCTION(BlueprintCallable, Category = "readInputFile")
 			static FString getTargetName(FString toParse);
 
 		UFUNCTION(BlueprintCallable, Category = "readInputFile")
@@ -43,4 +46,16 @@ public:
 	
 		UFUNCTION(BlueprintCallable, Category = "readInputFile")
 			static FString getSiteName(FString toParse);
+
+		UFUNCTION(BlueprintCallable, Category = "readInputFile")
+			static int32 getStartStart(FString toParse);
+
+		UFUNCTION(BlueprintCallable, Category = "readInputFile")
+			static int32 getStartEnd(FString toParse);
+
+		UFUNCTION(BlueprintCallable, Category = "readInputFile")
+			static int32 getEndStart(FString toParse);
+
+		UFUNCTION(BlueprintCallable, Category = "readInputFile")
+			static int32 getEndEnd(FString toParse);
 };

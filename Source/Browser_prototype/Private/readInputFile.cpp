@@ -47,6 +47,20 @@ bool UreadInputFile::isSNP(TArray<FString> inputArray)
 	}
 }
 
+bool UreadInputFile::isArcTrack(TArray<FString> inputArray)
+{
+	TArray<FString> secondLineArray;
+	inputArray[1].ParseIntoArrayWS(secondLineArray, NULL);
+	int len = secondLineArray.Num();
+
+	if (len > 4) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
 FString UreadInputFile::getTargetName(FString toParse)
 {
 	TArray<FString> forsplit;
@@ -98,4 +112,32 @@ FString UreadInputFile::getSiteName(FString toParse)
 
 	FString retString = forsplit[3];
 	return retString;
+}
+
+int32 UreadInputFile::getStartStart(FString toParse)
+{
+	return getFeatureStart(toParse);
+}
+
+int32 UreadInputFile::getStartEnd(FString toParse)
+{
+	return getFeatureEnd(toParse);
+}
+
+int32 UreadInputFile::getEndStart(FString toParse)
+{
+	TArray<FString> forsplit;
+	toParse.ParseIntoArrayWS(forsplit, NULL);
+
+	int32 endStart = FCString::Atoi(*forsplit[4]);
+	return endStart;
+}
+
+int32 UreadInputFile::getEndEnd(FString toParse)
+{
+	TArray<FString> forsplit;
+	toParse.ParseIntoArrayWS(forsplit, NULL);
+
+	int32 endEnd = FCString::Atoi(*forsplit[5]);
+	return endEnd;
 }
