@@ -39,4 +39,7 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "GenerateTrack")
 		static TArray<FString> generateTranscriptionSiteInfoArray(FString targetChr, FString geneName, FString positionRange, FString name, FString trackName);
+
+	UFUNCTION(BlueprintCallable, Category = "GenerateTrack")
+		static TArray<FString> generateArcInfoArray(FString targetChr, FString geneName, FString startRange, FString endRange, FString trackName);
 };

@@ -100,3 +100,16 @@ TArray<FString> AChipSeqTrack::generateTranscriptionSiteInfoArray(FString target
 
 	return returnArray;
 }
+
+TArray<FString> AChipSeqTrack::generateArcInfoArray(FString targetChr, FString geneName, FString startRange, FString endRange, FString trackName)
+{
+	TArray<FString> returnArray;
+
+	returnArray.Add(geneName);
+	returnArray.Add("On chromosome: " + targetChr);
+	returnArray.Add("Arc start: " + startRange);
+	returnArray.Add("Arc end: " + endRange);
+	returnArray.Add(trackName);
+
+	return returnArray;
+}
