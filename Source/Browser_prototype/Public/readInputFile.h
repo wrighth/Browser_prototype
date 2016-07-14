@@ -58,4 +58,7 @@ public:
 
 		UFUNCTION(BlueprintCallable, Category = "readInputFile")
 			static int32 getEndEnd(FString toParse);
+
+		UFUNCTION(BlueprintCallable, Category = "readInputFile")
+			static FVector getEndPoint(FString toParse);
 };

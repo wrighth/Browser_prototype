@@ -141,3 +141,16 @@ int32 UreadInputFile::getEndEnd(FString toParse)
 	int32 endEnd = FCString::Atoi(*forsplit[5]);
 	return endEnd;
 }
+
+FVector UreadInputFile::getEndPoint(FString toParse)
+{
+	TArray<FString> forsplit;
+	toParse.ParseIntoArrayWS(forsplit, NULL);
+
+	float xCoor = FCString::Atof(*forsplit[1]);
+	float yCoor = FCString::Atof(*forsplit[2]);
+	float zCoor = FCString::Atof(*forsplit[3]);
+	
+	FVector retVector = FVector(xCoor, yCoor, zCoor);
+	return retVector;
+}
