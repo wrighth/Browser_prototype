@@ -99,3 +99,11 @@ FString UreadInputFile::getSiteName(FString toParse)
 	FString retString = forsplit[3];
 	return retString;
 }
+
+TArray <FString> UreadInputFile::getNetwork(FString toParse)
+{
+	TArray<FString> forsplit;
+	toParse.ParseIntoArrayWS(forsplit, NULL);
+
+	return forsplit;
+}

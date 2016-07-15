@@ -43,4 +43,8 @@ public:
 	
 		UFUNCTION(BlueprintCallable, Category = "readInputFile")
 			static FString getSiteName(FString toParse);
+
+		UFUNCTION(BlueprintCallable, Category = "readInputFile")
+			static TArray <FString> getNetwork(FString toParse);
+
 };
