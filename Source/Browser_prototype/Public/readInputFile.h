@@ -14,11 +14,24 @@ class UreadInputFile : public UBlueprintFunctionLibrary // Defines inheritance f
 {
 	GENERATED_BODY()
 public:
+
+		UFUNCTION(BlueprintCallable, Category = "readInputFile")
+			static bool isValidFilePath(FString filepath);
+		
 		UFUNCTION(BlueprintCallable, Category = "readInputFile") // Macro to define functions called from Blueprints. Category argument defines heading for menus in Blueprint interface
 			static TArray <FString> loadArrayFromFile(FString inFileName); // Defined as static to make accessible, actual function name is U + function name (e.g. UreadInputFile) in code.
 		
 		UFUNCTION(BlueprintCallable, Category = "readInputFile")
 			static FString getFirstLine(TArray <FString> inArray);
+
+		UFUNCTION(BlueprintCallable, Category = "readInputFile")
+			static bool isGeneModelFile(TArray<FString> inputArray);
+
+		UFUNCTION(BlueprintCallable, Category = "readInputFile")
+			static bool isTrackFile(TArray<FString> inputArray);
+
+		UFUNCTION(BlueprintCallable, Category = "readInputFile")
+			static bool isTransformFile(TArray<FString> inputArray);
 
 		UFUNCTION(BlueprintCallable, Category = "readInputFile")
 			static bool isChipSeq(TArray<FString> inputArray);
@@ -28,6 +41,9 @@ public:
 
 		UFUNCTION(BlueprintCallable, Category = "readInputFile")
 			static bool isArcTrack(TArray<FString> inputArray);
+
+		UFUNCTION(BlueprintCallable, Category = "readInputFile")
+			static FString getTrackName(FString toParse);
 
 		UFUNCTION(BlueprintCallable, Category = "readInputFile")
 			static FString getTargetName(FString toParse);
