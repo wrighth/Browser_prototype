@@ -154,3 +154,4 @@ FVector UreadInputFile::getEndPoint(FString toParse)
 	FVector retVector = FVector(xCoor, yCoor, zCoor);
 	return retVector;
 }
+
