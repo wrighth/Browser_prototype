@@ -14,6 +14,10 @@ class UreadInputFile : public UBlueprintFunctionLibrary // Defines inheritance f
 {
 	GENERATED_BODY()
 public:
+
+		UFUNCTION(BlueprintCallable, Category = "readInputFile")
+			static bool isValidFilePath(FString filepath);
+
 		UFUNCTION(BlueprintCallable, Category = "readInputFile") // Macro to define functions called from Blueprints. Category argument defines heading for menus in Blueprint interface
 			static TArray <FString> loadArrayFromFile(FString inFileName); // Defined as static to make accessible, actual function name is U + function name (e.g. UreadInputFile) in code.
 		
@@ -21,10 +25,25 @@ public:
 			static FString getFirstLine(TArray <FString> inArray);
 
 		UFUNCTION(BlueprintCallable, Category = "readInputFile")
+			static bool isGeneModelFile(TArray<FString> inputArray);
+
+		UFUNCTION(BlueprintCallable, Category = "readInputFile")
+			static bool isTrackFile(TArray<FString> inputArray);
+
+		UFUNCTION(BlueprintCallable, Category = "readInputFile")
+			static bool isTransformFile(TArray<FString> inputArray);
+
+		UFUNCTION(BlueprintCallable, Category = "readInputFile")
 			static bool isChipSeq(TArray<FString> inputArray);
 
 		UFUNCTION(BlueprintCallable, Category = "readInputFile")
 			static bool isSNP(TArray<FString> inputArray);
+
+		UFUNCTION(BlueprintCallable, Category = "readInputFile")
+			static bool isArcTrack(TArray<FString> inputArray);
+
+		UFUNCTION(BlueprintCallable, Category = "readInputFile")
+			static FString getTrackName(FString toParse);
 
 		UFUNCTION(BlueprintCallable, Category = "readInputFile")
 			static FString getTargetName(FString toParse);
@@ -43,6 +62,21 @@ public:
 	
 		UFUNCTION(BlueprintCallable, Category = "readInputFile")
 			static FString getSiteName(FString toParse);
+
+		UFUNCTION(BlueprintCallable, Category = "readInputFile")
+			static int32 getStartStart(FString toParse);
+
+		UFUNCTION(BlueprintCallable, Category = "readInputFile")
+			static int32 getStartEnd(FString toParse);
+
+		UFUNCTION(BlueprintCallable, Category = "readInputFile")
+			static int32 getEndStart(FString toParse);
+
+		UFUNCTION(BlueprintCallable, Category = "readInputFile")
+			static int32 getEndEnd(FString toParse);
+
+		UFUNCTION(BlueprintCallable, Category = "readInputFile")
+			static FVector getEndPoint(FString toParse);
 
 		UFUNCTION(BlueprintCallable, Category = "readInputFile")
 			static TArray <FString> getNetwork(FString toParse);

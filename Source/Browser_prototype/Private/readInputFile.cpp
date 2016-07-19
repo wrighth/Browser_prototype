@@ -5,8 +5,22 @@
 #include "CString.h"
 #include "../Public/readInputFile.h" //header file for class
 #include <string>
+#include <fstream>
 
 using namespace std;
+
+bool UreadInputFile::isValidFilePath(FString filepath)
+{
+	string CStyleFilePath(TCHAR_TO_UTF8(*filepath));
+	std::ifstream test(CStyleFilePath);
+
+	if (!test) {
+		return false;
+	}
+	else {
+		return true;
+	}
+}
 
 TArray <FString> UreadInputFile::loadArrayFromFile(FString inFileName)
 {
@@ -19,6 +33,64 @@ TArray <FString> UreadInputFile::loadArrayFromFile(FString inFileName)
 FString UreadInputFile::getFirstLine(TArray<FString> inArray)
 {
 	return inArray[0];
+}
+
+bool UreadInputFile::isGeneModelFile(TArray<FString> inputArray)
+{
+	TArray<FString> testLineArray;
+	inputArray[0].ParseIntoArrayWS(testLineArray, NULL);
+
+	if (testLineArray.Num() < 9) {
+		return false;
+	}
+	else {
+		return true;
+	}
+}
+
+bool UreadInputFile::isTrackFile(TArray<FString> inputArray)
+{
+	FString firstLine = inputArray[0];
+	TArray<FString> secondLineArray;
+	inputArray[1].ParseIntoArrayWS(secondLineArray, NULL);
+
+	bool firstLineCheck;
+	bool secondLineCheck;
+
+	if (firstLine.Contains("track name=\"")) {
+		firstLineCheck = true;
+	}
+	else {
+		firstLineCheck = false;
+	}
+
+	if (secondLineArray.Num() <= 6) {
+		secondLineCheck = true;
+	}
+	else {
+		secondLineCheck = false;
+	}
+
+	return firstLineCheck && secondLineCheck;
+}
+
+bool UreadInputFile::isTransformFile(TArray<FString> inputArray)
+{
+	FString firstLine = inputArray[0];
+	TArray<FString> secondLineArray;
+	inputArray[1].ParseIntoArrayWS(secondLineArray, NULL);
+
+	if (!firstLine.Contains("track name=\"")) {
+		if (secondLineArray.Num() == 4) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	else {
+		return false;
+	}
 }
 
 bool UreadInputFile::isChipSeq(TArray<FString> inputArray)
@@ -45,6 +117,29 @@ bool UreadInputFile::isSNP(TArray<FString> inputArray)
 	} else {
 		return false;
 	}
+}
+
+bool UreadInputFile::isArcTrack(TArray<FString> inputArray)
+{
+	TArray<FString> secondLineArray;
+	inputArray[1].ParseIntoArrayWS(secondLineArray, NULL);
+	int len = secondLineArray.Num();
+
+	if (len > 4) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
+FString UreadInputFile::getTrackName(FString toParse)
+{
+	FString retString = toParse;
+	retString = retString.LeftChop(1);
+	retString = retString.RightChop(12);
+
+	return retString;
 }
 
 FString UreadInputFile::getTargetName(FString toParse)
@@ -98,6 +193,47 @@ FString UreadInputFile::getSiteName(FString toParse)
 
 	FString retString = forsplit[3];
 	return retString;
+}
+
+int32 UreadInputFile::getStartStart(FString toParse)
+{
+	return getFeatureStart(toParse);
+}
+
+int32 UreadInputFile::getStartEnd(FString toParse)
+{
+	return getFeatureEnd(toParse);
+}
+
+int32 UreadInputFile::getEndStart(FString toParse)
+{
+	TArray<FString> forsplit;
+	toParse.ParseIntoArrayWS(forsplit, NULL);
+
+	int32 endStart = FCString::Atoi(*forsplit[4]);
+	return endStart;
+}
+
+int32 UreadInputFile::getEndEnd(FString toParse)
+{
+	TArray<FString> forsplit;
+	toParse.ParseIntoArrayWS(forsplit, NULL);
+
+	int32 endEnd = FCString::Atoi(*forsplit[5]);
+	return endEnd;
+}
+
+FVector UreadInputFile::getEndPoint(FString toParse)
+{
+	TArray<FString> forsplit;
+	toParse.ParseIntoArrayWS(forsplit, NULL);
+
+	float xCoor = FCString::Atof(*forsplit[1]);
+	float yCoor = FCString::Atof(*forsplit[2]);
+	float zCoor = FCString::Atof(*forsplit[3]);
+
+	FVector retVector = FVector(xCoor, yCoor, zCoor);
+	return retVector;
 }
 
 TArray <FString> UreadInputFile::getNetwork(FString toParse)
