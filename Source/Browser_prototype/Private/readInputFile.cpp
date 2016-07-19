@@ -243,3 +243,18 @@ TArray <FString> UreadInputFile::getNetwork(FString toParse)
 
 	return forsplit;
 }
+
+TArray<FVector> UreadInputFile::getGenePositions(TArray<FString> inputArray)
+{
+	TArray<FVector> returnArray;
+	FVector currentVector;
+	TArray<FString> forRead;
+
+	for (int i = 0; i < inputArray.Num(); i++) {
+		inputArray[i].ParseIntoArrayWS(forRead, NULL);
+		currentVector = FVector(FCString::Atof(*forRead[0]), FCString::Atof(*forRead[1]), FCString::Atof(*forRead[2]));
+		returnArray.Add(currentVector);
+	}
+
+	return returnArray;
+}
