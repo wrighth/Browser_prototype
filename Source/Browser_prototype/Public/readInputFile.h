@@ -84,4 +84,7 @@ public:
 		UFUNCTION(BlueprintCallable, Category = "readInputFile")
 			static TArray<FVector> getGenePositions(TArray<FString> inputArray);
 
+		UFUNCTION(BlueprintCallable, Category = "readInputFile")
+			static TArray<FVector> generateGeneVectors(int32 length);
+
 };
