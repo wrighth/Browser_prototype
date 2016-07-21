@@ -325,7 +325,7 @@ TArray<FVector> UreadInputFile::generateGeneVectors(int32 length)
 	}
 
 	else {
-		while (currentRow <= columnSize - 1) {
+		while (currentRow <= columnSize) {
 			for (int32 i = 0; i < columnSize; i++) {
 				int32 currentX = 400 * (currentRow - 1);
 				int32 currentZ = 400 * (columnSize - (i + 1));
