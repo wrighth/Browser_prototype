@@ -18,4 +18,13 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "AutoLayout")
 		static TArray<FVector> getAlphabeticalVectors(TArray<FString> sortedNames);
 
+	UFUNCTION(BlueprintCallable, Category = "AutoLayout")
+		static TArray<int32> sortUnsortedInts(TArray<int32> unsortedInts);
+
+	UFUNCTION(BlueprintCallable, Category = "AutoLayout")
+		static TArray<FString> matchGeneNames(TArray<int32> unsortedInts, TArray<int32> sortedInts, TArray<FString> geneNames);
+
+	UFUNCTION(BlueprintCallable, Category = "AutoLayout")
+		static TArray<FVector> generateConnectivityLocations(TArray<int32> sortedInts);
+
 };
