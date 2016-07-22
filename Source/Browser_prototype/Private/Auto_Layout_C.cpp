@@ -138,7 +138,7 @@ TArray<FVector> UAuto_Layout_C::generateConnectivityLocations(TArray<int32> sort
 			returnVectors.Add(FVector(returnVectors[i - 1].X, returnVectors[i - 1].Y, returnVectors[i - 1].Z + 400));
 		}
 		else {
-			returnVectors.Add(FVector(400 * currentColumn - 1, 0, 0));
+			returnVectors.Add(FVector(400 * (currentColumn - 1), 0, 0));
 			currentColumn++;
 		}
 	}
