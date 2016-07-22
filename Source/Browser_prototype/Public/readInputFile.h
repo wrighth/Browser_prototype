@@ -43,6 +43,9 @@ public:
 			static bool isArcTrack(TArray<FString> inputArray);
 
 		UFUNCTION(BlueprintCallable, Category = "readInputFile")
+			static bool isNetworkFile(TArray<FString> inputArray);
+
+		UFUNCTION(BlueprintCallable, Category = "readInputFile")
 			static FString getTrackName(FString toParse);
 
 		UFUNCTION(BlueprintCallable, Category = "readInputFile")

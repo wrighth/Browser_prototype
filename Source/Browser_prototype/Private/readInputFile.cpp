@@ -134,6 +134,22 @@ bool UreadInputFile::isArcTrack(TArray<FString> inputArray)
 	}
 }
 
+bool UreadInputFile::isNetworkFile(TArray<FString> inputArray)
+{
+	TArray<FString> secondLineArray;
+	inputArray[0].ParseIntoArrayWS(secondLineArray, NULL);
+	int len = secondLineArray.Num();
+
+	if (len == 3) {
+		return true;
+	}
+	else {
+		return false;
+	}
+
+	return false;
+}
+
 FString UreadInputFile::getTrackName(FString toParse)
 {
 	FString retString = toParse;
