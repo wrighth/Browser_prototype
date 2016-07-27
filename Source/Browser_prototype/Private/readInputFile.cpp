@@ -8,11 +8,11 @@
 #include <fstream>
 #include <cmath>
 
-using namespace std;
+
 
 bool UreadInputFile::isValidFilePath(FString filepath)
 {
-	string CStyleFilePath(TCHAR_TO_UTF8(*filepath));
+	std::string CStyleFilePath(TCHAR_TO_UTF8(*filepath));
 	std::ifstream test(CStyleFilePath);
 
 	if (!test) {
@@ -257,9 +257,39 @@ TArray <FString> UreadInputFile::getNetwork(FString toParse)
 {
 	TArray<FString> forsplit;
 	toParse.ParseIntoArrayWS(forsplit, NULL);
-
+	
 	return forsplit;
 }
+
+TArray<Fmatchstruct> UreadInputFile::getMatchingEdge(TArray<FString> inputArray)
+{
+		int32 i;
+		int32 j;
+
+		UPROPERTY()
+		TArray<Fmatchstruct> matches;
+
+		for (i = 0; i < sizeof(inputArray); i++)
+		{
+			TArray<FString> arrayi;
+			inputArray[i].ParseIntoArrayWS(arrayi, NULL);
+
+			for (j = 1; j < sizeof(inputArray); j++)
+			{
+				TArray<FString> arrayj;
+				inputArray[j].ParseIntoArrayWS(arrayj, NULL);
+
+				if (arrayi[0] == arrayj[0] & arrayi[2] == arrayj[2])
+				{
+					Fmatchstruct temp = Fmatchstruct(i, j);
+					matches.Push(temp);
+					
+				}
+			}
+		}
+	return matches;
+	}
+
 
 TArray<FVector> UreadInputFile::getGenePositions(TArray<FString> inputArray)
 {

@@ -5,10 +5,26 @@
 #include "Kismet/BlueprintFunctionLibrary.h"// header for Blueprint accecssible function class
 #include "readInputFile.generated.h" // generated header for the class, must be last entry in the include block
 
-
 /**
  * 
  */
+
+USTRUCT()
+struct Fmatchstruct
+{
+	GENERATED_USTRUCT_BODY()
+
+	UPROPERTY()
+	int32 arrayindexi;
+
+	UPROPERTY()
+		int32 arrayindexj;
+
+	Fmatchstruct() {}
+	Fmatchstruct(int32 i, int32 j) : arrayindexi(i), arrayindexj(j) {}
+
+};
+
 UCLASS() // Macro to build Unreal class(required)
 class UreadInputFile : public UBlueprintFunctionLibrary // Defines inheritance from UBluePrintFunctionLibrary class, required to expose functions to Blueprints
 {
@@ -82,12 +98,18 @@ public:
 			static FVector getEndPoint(FString toParse);
 
 		UFUNCTION(BlueprintCallable, Category = "readInputFile")
-			static TArray <FString> getNetwork(FString toParse);
+			static TArray<FString> getNetwork(FString toParse);
+
+		UFUNCTION(BlueprintCallable, Category = "readInputFile")
+			static TArray<Fmatchstruct> getMatchingEdge(TArray<FString> inputArray);
 
 		UFUNCTION(BlueprintCallable, Category = "readInputFile")
 			static TArray<FVector> getGenePositions(TArray<FString> inputArray);
 
 		UFUNCTION(BlueprintCallable, Category = "readInputFile")
 			static TArray<FVector> generateGeneVectors(int32 length);
+
+	
+
 
 };

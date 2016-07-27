@@ -22,6 +22,38 @@ TArray<float> UScaleVectors::scaleSmallest(TArray<float> inputArray)
 	return newarray;
 }
 
+TArray<float> UScaleVectors::scaleMedian(TArray<float> inputArray)
+{
+	TArray<float> sortedArray;
 
+	for (int i = 0; i < inputArray.Num(); i++) {
+		sortedArray.Add(inputArray[i]);
+	}
 
+	for (int i = inputArray.Num() - 1; i > 0; --i) {
+		for (int j = 0; j < i; ++j) {
+			if (sortedArray[j] > sortedArray[j + 1]) {
+				float temp = sortedArray[j];
+				sortedArray[j] = sortedArray[j + 1];
+				sortedArray[j + 1] = temp;
+			}
+		}
+	}
 
+	float median = 0.0;
+
+	if ((inputArray.Num() % 2) == 0) {
+		median = (sortedArray[inputArray.Num() / 2] + sortedArray[(inputArray.Num() / 2) - 1]) / 2.0;
+	}
+	else {
+		median = sortedArray[inputArray.Num() / 2];
+	}
+
+	TArray<float> returnArray;
+
+	for (int i = 0; i < inputArray.Num(); i++) {
+		returnArray.Add((inputArray[i] / median));
+	}
+
+	return returnArray;
+}
