@@ -9,7 +9,7 @@
  * 
  */
 
-USTRUCT()
+USTRUCT(BlueprintType)
 struct Fmatchstruct
 {
 	GENERATED_USTRUCT_BODY()

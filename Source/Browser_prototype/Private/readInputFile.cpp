@@ -283,7 +283,6 @@ TArray<Fmatchstruct> UreadInputFile::getMatchingEdge(TArray<FString> inputArray)
 				{
 					Fmatchstruct temp = Fmatchstruct(i, j);
 					matches.Push(temp);
-					
 				}
 			}
 		}
