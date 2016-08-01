@@ -261,13 +261,13 @@ TArray <FString> UreadInputFile::getNetwork(FString toParse)
 	return forsplit;
 }
 
-TArray<Fmatchstruct> UreadInputFile::getMatchingEdge(TArray<FString> inputArray)
+TArray<FVector> UreadInputFile::getMatchingEdge(TArray<FString> inputArray)
 {
 		int32 i;
 		int32 j;
 
-		UPROPERTY()
-		TArray<Fmatchstruct> matches;
+		TArray<FVector> matches;
+		FVector match;
 
 		for (i = 0; i < sizeof(inputArray); i++)
 		{
@@ -278,11 +278,11 @@ TArray<Fmatchstruct> UreadInputFile::getMatchingEdge(TArray<FString> inputArray)
 			{
 				TArray<FString> arrayj;
 				inputArray[j].ParseIntoArrayWS(arrayj, NULL);
-
+				
 				if (arrayi[0] == arrayj[0] & arrayi[2] == arrayj[2])
 				{
-					Fmatchstruct temp = Fmatchstruct(i, j);
-					matches.Push(temp);
+					match = FVector(i, j, 0);
+					matches.Add(match);
 				}
 			}
 		}
