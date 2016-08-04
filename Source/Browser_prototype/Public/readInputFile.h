@@ -50,43 +50,13 @@ public:
 			static FString getTrackName(FString toParse);
 
 		UFUNCTION(BlueprintCallable, Category = "readInputFile")
-			static FString getTargetName(FString toParse);
-
-		UFUNCTION(BlueprintCallable, Category = "readInputFile")
-			static int32 getFeatureStart(FString toParse);
-
-		UFUNCTION(BlueprintCallable, Category = "readInputFile")
-			static int32 getFeatureEnd(FString toParse);
-
-		UFUNCTION(BlueprintCallable, Category = "readInputFile")
-			static float getFeatureHeight(FString toParse);
-
-		UFUNCTION(BlueprintCallable, Category = "readInputFile")
-			static FString getBase(FString toParse);
-	
-		UFUNCTION(BlueprintCallable, Category = "readInputFile")
-			static FString getSiteName(FString toParse);
-
-		UFUNCTION(BlueprintCallable, Category = "readInputFile")
-			static int32 getStartStart(FString toParse);
-
-		UFUNCTION(BlueprintCallable, Category = "readInputFile")
-			static int32 getStartEnd(FString toParse);
-
-		UFUNCTION(BlueprintCallable, Category = "readInputFile")
-			static int32 getEndStart(FString toParse);
-
-		UFUNCTION(BlueprintCallable, Category = "readInputFile")
-			static int32 getEndEnd(FString toParse);
+			static TArray<FString> getTrackInfo(FString toParse);
 
 		UFUNCTION(BlueprintCallable, Category = "readInputFile")
 			static FVector getEndPoint(FString toParse);
 
 		UFUNCTION(BlueprintCallable, Category = "readInputFile")
 			static TArray<FString> getNetwork(FString toParse);
-
-		UFUNCTION(BlueprintCallable, Category = "readInputFile")
-			static TArray<FVector> getMatchingEdge(TArray<FString> inputArray);
 
 		UFUNCTION(BlueprintCallable, Category = "readInputFile")
 			static TArray<FVector> getGenePositions(TArray<FString> inputArray);
