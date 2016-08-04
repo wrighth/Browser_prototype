@@ -53,6 +53,9 @@ public:
 			static TArray<FString> getTrackInfo(FString toParse);
 
 		UFUNCTION(BlueprintCallable, Category = "readInputFile")
+			static FString getTargetName(FString toParse);
+
+		UFUNCTION(BlueprintCallable, Category = "readInputFile")
 			static FVector getEndPoint(FString toParse);
 
 		UFUNCTION(BlueprintCallable, Category = "readInputFile")

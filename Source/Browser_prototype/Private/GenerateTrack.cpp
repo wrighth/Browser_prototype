@@ -40,7 +40,8 @@ float AChipSeqTrack::generateXDisplacement(int32 geneStart, int32 geneEnd, float
 	float realBPRatio = absGeneLength / bpLength;
 
 	float featureMiddle = (featureStart + featureEnd) / 2;
-	float geneToFeature = featureMiddle - geneStart;
+	float geneMiddle = (geneStart + geneEnd) / 2;
+	float geneToFeature = featureMiddle - geneMiddle;
 	float xDisplacement = geneToFeature * realBPRatio;
 	return xDisplacement;
 }

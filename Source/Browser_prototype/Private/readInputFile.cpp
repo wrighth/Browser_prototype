@@ -167,6 +167,14 @@ TArray<FString> UreadInputFile::getTrackInfo(FString toParse)
 	return returnArray;
 }
 
+FString UreadInputFile::getTargetName(FString toParse)
+{
+	TArray<FString> forsplit;
+	toParse.ParseIntoArrayWS(forsplit, NULL);
+
+	return forsplit[0];
+}
+
 FVector UreadInputFile::getEndPoint(FString toParse)
 {
 	TArray<FString> forsplit;
