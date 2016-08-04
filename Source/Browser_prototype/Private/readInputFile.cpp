@@ -159,85 +159,20 @@ FString UreadInputFile::getTrackName(FString toParse)
 	return retString;
 }
 
+TArray<FString> UreadInputFile::getTrackInfo(FString toParse)
+{
+	TArray<FString> returnArray;
+	toParse.ParseIntoArrayWS(returnArray, NULL);
+
+	return returnArray;
+}
+
 FString UreadInputFile::getTargetName(FString toParse)
 {
 	TArray<FString> forsplit;
 	toParse.ParseIntoArrayWS(forsplit, NULL);
 
 	return forsplit[0];
-}
-
-int32 UreadInputFile::getFeatureStart(FString toParse)
-{
-	TArray<FString> forsplit;
-	toParse.ParseIntoArrayWS(forsplit, NULL);
-
-	int32 retInt = FCString::Atoi(*forsplit[1]);
-	return retInt;
-}
-
-int32 UreadInputFile::getFeatureEnd(FString toParse)
-{
-	TArray<FString> forsplit;
-	toParse.ParseIntoArrayWS(forsplit, NULL);
-
-	int32 retInt = FCString::Atoi(*forsplit[2]);
-	return retInt;
-}
-
-float UreadInputFile::getFeatureHeight(FString toParse)
-{
-	TArray<FString> forsplit;
-	toParse.ParseIntoArrayWS(forsplit, NULL);
-
-	float retFloat = FCString::Atof(*forsplit[3]);
-	return retFloat;
-}
-
-FString UreadInputFile::getBase(FString toParse)
-{
-	TArray<FString> forsplit;
-	toParse.ParseIntoArrayWS(forsplit, NULL);
-
-	FString retString = forsplit[3];
-	return retString;
-}
-
-FString UreadInputFile::getSiteName(FString toParse)
-{
-	TArray<FString> forsplit;
-	toParse.ParseIntoArrayWS(forsplit, NULL);
-
-	FString retString = forsplit[3];
-	return retString;
-}
-
-int32 UreadInputFile::getStartStart(FString toParse)
-{
-	return getFeatureStart(toParse);
-}
-
-int32 UreadInputFile::getStartEnd(FString toParse)
-{
-	return getFeatureEnd(toParse);
-}
-
-int32 UreadInputFile::getEndStart(FString toParse)
-{
-	TArray<FString> forsplit;
-	toParse.ParseIntoArrayWS(forsplit, NULL);
-
-	int32 endStart = FCString::Atoi(*forsplit[4]);
-	return endStart;
-}
-
-int32 UreadInputFile::getEndEnd(FString toParse)
-{
-	TArray<FString> forsplit;
-	toParse.ParseIntoArrayWS(forsplit, NULL);
-
-	int32 endEnd = FCString::Atoi(*forsplit[5]);
-	return endEnd;
 }
 
 FVector UreadInputFile::getEndPoint(FString toParse)
@@ -260,34 +195,6 @@ TArray <FString> UreadInputFile::getNetwork(FString toParse)
 	
 	return forsplit;
 }
-
-TArray<FVector> UreadInputFile::getMatchingEdge(TArray<FString> inputArray)
-{
-		int32 i;
-		int32 j;
-
-		TArray<FVector> matches;
-		FVector match;
-
-		for (i = 0; i < sizeof(inputArray); i++)
-		{
-			TArray<FString> arrayi;
-			inputArray[i].ParseIntoArrayWS(arrayi, NULL);
-
-			for (j = 1; j < sizeof(inputArray); j++)
-			{
-				TArray<FString> arrayj;
-				inputArray[j].ParseIntoArrayWS(arrayj, NULL);
-				
-				if (arrayi[0] == arrayj[0] & arrayi[2] == arrayj[2])
-				{
-					match = FVector(i, j, 0);
-					matches.Add(match);
-				}
-			}
-		}
-	return matches;
-	}
 
 
 TArray<FVector> UreadInputFile::getGenePositions(TArray<FString> inputArray)
